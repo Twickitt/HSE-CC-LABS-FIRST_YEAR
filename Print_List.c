@@ -1,4 +1,5 @@
 #include "Print_List.h"
+#include <stdio.h>
 
 void Print_List(Student arr[], int size){
     for(int i = 0; i < size; i++){

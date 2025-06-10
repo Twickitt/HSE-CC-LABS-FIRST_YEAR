@@ -1,5 +1,5 @@
 Gc = gcc
-Sources = main.o Bin_Search_Tree.o Create_List.o Free_Tree.o Insertation_Of_Tree.o Linear_Search.o Print_List.o To_Lower.o Wrappers.o Bin_Search_Tree_With_Any_Case.o Linear_Search_With_Any_Case.o
+Sources = main.o Bin_Search_Tree.o Create_List.o Free_Tree.o Insertation_Of_Tree.o Linear_Search.o Print_List.o To_Lower.o Bin_Search_Tree_With_Any_Case.o Linear_Search_With_Any_Case.o Add_Student_To_Array.o Add_Student_To_Tree.o
 
 all: base 
 
@@ -19,7 +19,7 @@ Free_Tree.o: Free_Tree.c
 		$(Gc) -c Free_Tree.c
 
 Insertation_Of_Tree.o: Insertation_Of_Tree.c
-		$(Gc) -c Insertation_Of_Treeq.c
+		$(Gc) -c Insertation_Of_Tree.c
 	
 Linear_Search.o: Linear_Search.c
 		$(Gc) -c Linear_Search.c
@@ -36,8 +36,14 @@ Print_List.o: Print_List.c
 To_Lower.o: To_Lower.c
 		$(Gc) -c To_Lower.c
 
-Wrappers.o: Wrappers.c
-		$(GC) -c Wrappers.c
+Add_Student_To_Array.o: Add_Student_To_Array.c
+		$(Gc) -c Add_Student_To_Array.c
+
+Add_Student_To_Tree.o: Add_Student_To_Tree.c
+		$(Gc) -c Add_Student_To_Tree.c
+
+
+
 
 clean:
 		rm -rf *.o base

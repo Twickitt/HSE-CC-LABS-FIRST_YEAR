@@ -1,5 +1,6 @@
 #include "Student_Struct.h"
 #include <stdlib.h>
+#include <stdio.h>
 
 Student* Add_Student_To_Array(Student* arr, int* size, Student new_student){
     Student* tmp =realloc(arr, (*size + 1)*sizeof(Student));

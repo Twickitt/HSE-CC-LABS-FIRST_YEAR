@@ -1,5 +1,6 @@
 #include "Bin_Search_Tree_With_Any_Case.h"
 #include <string.h>
+#include <stdio.h>
 #include "To_Lower.h"
 
 #define MAX_LEN_KEY 100
@@ -14,8 +15,10 @@ int Bin_Search_Tree_With_Any_Case(TreeNode* root, char* key){
     To_Lower(key, lower_key);
     To_Lower(root->student->name, lower_name);
 
-    if(!root)
+    if(!root){
+        printf("\nThere is nothing with such key in this list\n");
         return -1;
+    }
     
         int cmp = strcmp(lower_key, lower_name);
         

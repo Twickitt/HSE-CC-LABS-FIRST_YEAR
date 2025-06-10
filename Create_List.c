@@ -1,5 +1,7 @@
 #include "Create_List.h"
 #include <string.h>
+#include <stdlib.h>
+#include <stdio.h>
 
 int Create_List(Student* arr, int n){
 
