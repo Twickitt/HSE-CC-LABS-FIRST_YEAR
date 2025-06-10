@@ -6,6 +6,15 @@
 
 #include "Student_Struct.h"
 #include "TreeNode_Struct.h"
+// #include "Insertation_Of_Tree.h"
+// #include "To_Lower.h"
+// #include "Bin_Search_Tree.h"
+// #include "Free_Tree.h"
+// #include "Linear_Search.h"
+// #include "Create_List.h"
+// #include "Print_List.h"
+// #include "Wrappers.h"
+
 
 #define MAX_LEN_KEY 100
 
@@ -42,7 +51,7 @@ void To_Lower(char* S, char* B){
 }
 
 
-int Bin_Search_Tree(TreeNode* root, char* key){
+int Bin_Search_Tree_With_Any_Case(TreeNode* root, char* key){
     
     char lower_key[MAX_LEN_KEY];
     char lower_name[MAX_LEN_KEY];
@@ -60,13 +69,33 @@ int Bin_Search_Tree(TreeNode* root, char* key){
         }
 
         else if(cmp < 0){
+            return Bin_Search_Tree_With_Any_Case(root->left, key);
+        }
+
+        else   
+            return Bin_Search_Tree_With_Any_Case(root->right, key);
+}
+
+
+int Bin_Search_Tree(TreeNode* root, char* key){
+    
+    
+    if(!root)
+        return -1;
+    
+        int cmp = strcmp(key, root->student->name);
+        
+        if(cmp == 0){
+            return root->index;
+        }
+
+        else if(cmp < 0){
             return Bin_Search_Tree(root->left, key);
         }
 
         else   
             return Bin_Search_Tree(root->right, key);
 }
-
 
 
 void Free_Tree(TreeNode* root){
@@ -78,8 +107,23 @@ void Free_Tree(TreeNode* root){
     }
 }
 
-int Linear_Search(Student arr[], int size, char* key) {
+int Linear_Search_With_Any_Case(Student arr[], int size, char* key) {
+
+    char lower_key[MAX_LEN_KEY];
+    char lower_name[MAX_LEN_KEY];
+
+    To_Lower(key, lower_key);
     
+    for (int i = 0; i < size; i++) {
+        To_Lower(arr[i].name, lower_name);
+        if (strstr(lower_name, lower_key) != NULL)
+            return i;
+    }
+    return -1;
+}
+
+
+int Linear_Search(Student arr[], int size, char* key) {
     
     for (int i = 0; i < size; i++) {
         if (strstr(arr[i].name, key) != NULL)
@@ -131,6 +175,14 @@ void Print_List(Student arr[], int size){
 }
 
 
+int linear_search_wrapper_1(Student* students, TreeNode* root, int size, char* key) {
+    return Linear_Search_With_Any_Case(students, size, key);
+}
+
+int tree_search_wrapper_1(Student* students, TreeNode* root, int size, char* key) {
+    return Bin_Search_Tree_With_Any_Case(root, key);
+}
+
 int linear_search_wrapper(Student* students, TreeNode* root, int size, char* key) {
     return Linear_Search(students, size, key);
 }
@@ -140,12 +192,10 @@ int tree_search_wrapper(Student* students, TreeNode* root, int size, char* key) 
 }
 
 
-
-
 int main(){
 
 
-    int (*menu[])(Student*, TreeNode*, int, char*) = {linear_search_wrapper, tree_search_wrapper};
+    int (*menu[])(Student*, TreeNode*, int, char*) = {linear_search_wrapper, tree_search_wrapper, linear_search_wrapper_1, tree_search_wrapper_1};
 
     char key[MAX_LEN_KEY];
     int count, choice;
@@ -185,6 +235,8 @@ int main(){
     do {
         printf("\n1. Linear Search\n");
         printf("2. Binary Tree Search\n");
+        printf("3. Linear Search With Any Case\n");
+        printf("4. Binary Tree Search With Any Case\n");
         printf("0. Exit\n");
         printf("Select Action: ");
 
@@ -194,7 +246,7 @@ int main(){
             continue;
         }
 
-        if (choice < 0 || choice > 2) {
+        if (choice < 0 || choice > 4) {
             printf("You entered wrong number\n");
             continue;
         }
@@ -219,7 +271,7 @@ int main(){
         sec_4_alg = (float)(end - start)/CLOCKS_PER_SEC;
 
         if (index != -1)
-            printf("First appearance of the key %s is in the index=%d\n", key, index);
+            printf("First appearance of the key \'%s\' is in the index=%d\n", key, index);
         else    
             printf("There is nothing with such key in this list\n");
 
