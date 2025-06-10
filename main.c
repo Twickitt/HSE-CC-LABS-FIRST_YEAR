@@ -178,6 +178,50 @@ void Print_List(Student arr[], int size){
 }
 
 
+
+Student* Add_Student_To_Array(Student* arr, int* size, Student new_student){
+    Student* tmp =realloc(arr, (*size + 1)*sizeof(Student));
+    if(!tmp){
+        printf("Redistribution memory failure\n");
+        return arr;
+    }
+
+    arr = tmp;
+    arr[*size] = new_student;
+    (*size)++;
+    return arr;
+}
+
+
+TreeNode* Add_Student_To_Tree(TreeNode* root, Student* s, int index) {
+    if (!root) {
+        TreeNode* node = malloc(sizeof(TreeNode));
+        
+        if (!node) {
+            printf("Memorry allocation error\n");
+            return NULL;
+        }
+        
+        node->student = s;
+        node->index = index;
+        node->left = node->right = NULL;
+        return node;
+    }
+
+    int cmp = strcmp(s->name, root->student->name);
+    
+    if (cmp < 0) {
+        root->left = Add_Student_To_Tree(root->left, s, index);
+    } 
+    
+    else {
+        root->right = Add_Student_To_Tree(root->right, s, index);
+    }
+
+    return root;
+}
+
+
 int linear_search_wrapper_1(Student* students, TreeNode* root, int size, char* key) {
     return Linear_Search_With_Any_Case(students, size, key);
 }
@@ -193,6 +237,7 @@ int linear_search_wrapper(Student* students, TreeNode* root, int size, char* key
 int tree_search_wrapper(Student* students, TreeNode* root, int size, char* key) {
     return Bin_Search_Tree(root, key);
 }
+
 
 
 int main(){
@@ -282,6 +327,7 @@ int main(){
 
     } while (1);
 
+    
     free(Students);
     Free_Tree(root);
     return 0;
