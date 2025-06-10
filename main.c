@@ -14,6 +14,9 @@
 // #include "Create_List.h"
 // #include "Print_List.h"
 // #include "Wrappers.h"
+// #include "Bin_Search_Tree_With_Any_Case.h"
+// #include "Linear_Search_With_Any_Case.h"
+
 
 
 #define MAX_LEN_KEY 100

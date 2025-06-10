@@ -1,5 +1,5 @@
 Gc = gcc
-Sources = main.o Bin_Search_Tree.o Create_List.o Free_Tree.o Insertation_Of_Tree.o Linear_Search.o Print_List.o To_Lower.o Wrappers.o
+Sources = main.o Bin_Search_Tree.o Create_List.o Free_Tree.o Insertation_Of_Tree.o Linear_Search.o Print_List.o To_Lower.o Wrappers.o Bin_Search_Tree_With_Any_Case.o Linear_Search_With_Any_Case.o
 
 all: base 
 
@@ -23,6 +23,12 @@ Insertation_Of_Tree.o: Insertation_Of_Tree.c
 	
 Linear_Search.o: Linear_Search.c
 		$(Gc) -c Linear_Search.c
+
+Bin_Search_Tree_With_Any_Case.o: Bin_Search_Tree_With_Any_Case.c
+		$(Gc) -c Bin_Search_Tree_With_Any_Case.c
+
+Linear_Search_With_Any_Case.o: Linear_Search_With_Any_Case.c
+		$(Gc) -c Linear_Search_With_Any_Case.c
 
 Print_List.o: Print_List.c
 		$(Gc) -c Print_List.c
