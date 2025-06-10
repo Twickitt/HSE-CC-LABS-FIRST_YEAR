@@ -2,23 +2,14 @@
 #include <stdlib.h>
 #include <string.h>
 #include <time.h>
+#include <ctype.h>
+
+#include "Student_Struct.h"
+#include "TreeNode_Struct.h"
 
 #define MAX_LEN_KEY 100
 
 
-typedef struct{
-    char name[30];
-    char faculty[30];
-    char group[20];
-    float GPA;
-} Student;
-
-typedef struct TreeNode{
-    Student* student;
-    int index;
-    struct TreeNode* left;
-    struct TreeNode* right;
-} TreeNode;
 
 
 TreeNode* Insertation_Of_Tree(TreeNode* root, Student* s, int index){
@@ -40,12 +31,29 @@ TreeNode* Insertation_Of_Tree(TreeNode* root, Student* s, int index){
     return root;    
 }
 
+
+void To_Lower(char* S, char* B){
+    while(*S){
+        *B++ = tolower(*S++);
+
+    }
+    *B = '\0';
+
+}
+
+
 int Bin_Search_Tree(TreeNode* root, char* key){
     
+    char lower_key[MAX_LEN_KEY];
+    char lower_name[MAX_LEN_KEY];
+
+    To_Lower(key, lower_key);
+    To_Lower(root->student->name, lower_name);
+
     if(!root)
         return -1;
     
-        int cmp = strcmp(key, root->student->name);
+        int cmp = strcmp(lower_key, lower_name);
         
         if(cmp == 0){
             return root->index;
@@ -58,6 +66,7 @@ int Bin_Search_Tree(TreeNode* root, char* key){
         else   
             return Bin_Search_Tree(root->right, key);
 }
+
 
 
 void Free_Tree(TreeNode* root){
