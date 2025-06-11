@@ -25,7 +25,6 @@ Node* Crash_Fix(Node* root, Node* z);
 
 Node* Insert(Node* root, Student* s, int index);
 
-void Tree_Inorder_Pass(Node* root);
 
 int Red_Black_Search(Node* root, char* key);
 

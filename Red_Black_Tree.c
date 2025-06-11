@@ -59,7 +59,9 @@ Node* Crash_Fix(Node* root, Node* z) {
                 uncle->color = BLACK;
                 grandparent->color = RED;
                 z = grandparent;
-            } else {
+            } 
+            
+            else {
                 if (z == z->parent->right) {
                     z = z->parent;
                     Rotate_Left(&root, z);
@@ -68,14 +70,18 @@ Node* Crash_Fix(Node* root, Node* z) {
                 grandparent->color = RED;
                 Rotate_Right(&root, grandparent);
             }
-        } else {
+        } 
+        
+        else {
             Node* uncle = grandparent->left;
             if (uncle && uncle->color == RED) {
                 z->parent->color = BLACK;
                 uncle->color = BLACK;
                 grandparent->color = RED;
                 z = grandparent;
-            } else {
+            }
+            
+            else {
                 if (z == z->parent->left) {
                     z = z->parent;
                     Rotate_Right(&root, z);
@@ -114,13 +120,7 @@ Node* Insert(Node* root, Student* s, int index) {
     return Crash_Fix(root, z);
 }
 
-void Tree_Inorder_Pass(Node* root) {
-    if (root == NULL) 
-        return;
-    Tree_Inorder_Pass(root->left);
-    printf("%s (Index: %d, GPA: %.2f)\n", root->student->name, root->index, root->student->GPA);
-    Tree_Inorder_Pass(root->right);
-}
+
 
 int Red_Black_Search(Node* root, char* key) {
     while (root) {
