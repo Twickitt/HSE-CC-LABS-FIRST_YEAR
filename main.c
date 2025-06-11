@@ -4,9 +4,7 @@
 #include <time.h>
 #include <ctype.h>
 
-#include "Student_Struct.h"
-#include "TreeNode_Struct.h"
-#include "Insertation_Of_Tree.h"
+#include "Insertation_In_Tree.h"
 #include "To_Lower.h"
 #include "Bin_Search_Tree.h"
 #include "Free_Tree.h"
@@ -16,6 +14,7 @@
 #include "Wrappers.h"
 #include "Bin_Search_Tree_With_Any_Case.h"
 #include "Linear_Search_With_Any_Case.h"
+#include "Red_Black_Tree.h"
 
 
 
@@ -23,10 +22,12 @@
 
 
 
+Node* start = NULL;
+
 int main(){
 
 
-    int (*menu[])(Student*, TreeNode*, int, char*) = {linear_search_wrapper, tree_search_wrapper, linear_search_wrapper_1, tree_search_wrapper_1};
+    int (*menu[])(Student*, TreeNode*, int, char*) = {linear_search_wrapper, tree_search_wrapper, linear_search_wrapper_1, tree_search_wrapper_1, red_black_tree_wrapper};
 
     char key[MAX_LEN_KEY];
     int count, choice;
@@ -51,16 +52,20 @@ int main(){
         printf("\nMemorry allocation error");
         return 1;
     }
+
     
     TreeNode* root = NULL;
+
     
     Create_List(Students, count);
     printf("\nGenerated list of students\n");
     Print_List(Students, count);
 
 
-    for(int i = 0; i < count; i ++)
-        root = Insertation_Of_Tree(root, &Students[i], i);
+    for(int i = 0; i < count; i ++){
+        root = Insertation_In_Tree(root, &Students[i], i);
+        start = Insert(start, &Students[i], i);
+    }
 
 
     do {
@@ -68,6 +73,7 @@ int main(){
         printf("2. Binary Tree Search\n");
         printf("3. Linear Search With Any Case\n");
         printf("4. Binary Tree Search With Any Case\n");
+        printf("5. Red Black Search\n");
         printf("0. Exit\n");
         printf("Select Action: ");
 
@@ -77,7 +83,7 @@ int main(){
             continue;
         }
 
-        if (choice < 0 || choice > 4) {
+        if (choice < 0 || choice > 5) {
             printf("You entered wrong number\n");
             continue;
         }
@@ -113,6 +119,7 @@ int main(){
     
     free(Students);
     Free_Tree(root);
+    Free_RB_Tree(start);
     return 0;
 
 }
