@@ -15,6 +15,7 @@
 #include "Bin_Search_Tree_With_Any_Case.h"
 #include "Linear_Search_With_Any_Case.h"
 #include "Red_Black_Tree.h"
+#include "Add_To_CSV.h"
 
 
 
@@ -26,8 +27,9 @@ Node* start = NULL;
 
 int main(){
 
+    float times[21];
 
-    int (*menu[])(Student*, TreeNode*, int, char*) = {linear_search_wrapper, tree_search_wrapper, linear_search_wrapper_1, tree_search_wrapper_1, red_black_tree_wrapper};
+    int (*menu[])(Student*, TreeNode*, int, char*) = {linear_search_wrapper, tree_search_wrapper, red_black_tree_wrapper, linear_search_wrapper_1, tree_search_wrapper_1};
 
     char key[MAX_LEN_KEY];
     int count, choice;
@@ -39,7 +41,7 @@ int main(){
             while (getchar() != '\n'); 
             continue;
         }
-        if (count <= 0 || count > 100000) {
+        if (count <= 0 || count > 1000000) {
             printf("Number must be in range (0;100000)\n");
             continue;
         }
@@ -71,9 +73,9 @@ int main(){
     do {
         printf("\n1. Linear Search\n");
         printf("2. Binary Tree Search\n");
-        printf("3. Linear Search With Any Case\n");
-        printf("4. Binary Tree Search With Any Case\n");
-        printf("5. Red Black Search\n");
+        printf("3. Red Black Search\n");
+        printf("4. Linear Search With Any Case\n");
+        printf("5. Binary Tree Search With Any Case\n");
         printf("0. Exit\n");
         printf("Select Action: ");
 
@@ -115,6 +117,22 @@ int main(){
         printf("Searching complited within %.4f\n", sec_4_alg);
 
     } while (1);
+
+
+    // for (int i = 0; i < 4; i++) {
+    // clock_t start = clock();
+    // int index = menu[i+1](Students, root, count, key);
+    // clock_t end = clock();
+    // times[i] = (float)(end - start) / CLOCKS_PER_SEC;
+    // for (int i = 0; i < 3; i++) {
+    //     if (times[i] < -1 || times[i] > 1000.0f)  
+    //         printf("Warning: algo %d time suspicious: %.6f\n", i, times[i]);
+    // }
+    // printf("%d Lap resulrs: %s\n", i, times[i]);
+    // }
+
+    // printf("\nSaving to CSV... \n");
+    // save_times_all_algorithms("Data.csv", count, times, 3);
 
     
     free(Students);

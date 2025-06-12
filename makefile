@@ -1,5 +1,5 @@
 Gc = gcc
-Sources = main.o Bin_Search_Tree.o Create_List.o Free_Tree.o Insertation_In_Tree.o Linear_Search.o Print_List.o To_Lower.o Bin_Search_Tree_With_Any_Case.o Linear_Search_With_Any_Case.o Red_Black_Tree.o
+Sources = main.o Bin_Search_Tree.o Create_List.o Free_Tree.o Insertation_In_Tree.o Linear_Search.o Print_List.o To_Lower.o Bin_Search_Tree_With_Any_Case.o Linear_Search_With_Any_Case.o Red_Black_Tree.o Add_To_CSV.o
 all: base 
 
 base: $(Sources)
@@ -38,5 +38,7 @@ To_Lower.o: To_Lower.c
 Red_Black_Tree.o: Red_Black_Tree.c
 		$(Gc) -c Red_Black_Tree.c
 
+Add_To_CSV.o: Add_To_CSV.c
+		$(Gc) -c Add_To_CSV.c
 clean:
 		rm -rf *.o base
