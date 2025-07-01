@@ -1,0 +1,8 @@
+{
+    "files.associations": {
+        "stdlib.h": "c",
+        "xmemory": "c",
+        "xutility": "c",
+        "comparison.h": "c"
+    }
+}

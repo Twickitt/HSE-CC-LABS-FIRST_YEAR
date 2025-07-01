@@ -1,0 +1,43 @@
+Algorithm      Direction      Size      Time
+
+Selection Sort; ascending; 100; 0.00000000
+
+Quick Sort; ascending; 100; 0.00000000
+
+Heap Sort; ascending; 100; 0.00000000
+
+Selection Sort; ascending; 1000; 0.00400000
+
+Quick Sort; ascending; 1000; 0.00000000
+
+Heap Sort; ascending; 1000; 0.00000000
+
+Selection Sort; ascending; 10000; 0.18400000
+
+Quick Sort; ascending; 10000; 0.00200000
+
+Heap Sort; ascending; 10000; 0.00300000
+
+Selection Sort; ascending; 50000; 4.90199995
+
+Quick Sort; ascending; 50000; 0.01000000
+
+Heap Sort; ascending; 50000; 0.02200000
+
+Selection Sort; ascending; 100000; 19.73999977
+
+Quick Sort; ascending; 100000; 0.02200000
+
+Heap Sort; ascending; 100000; 0.04100000
+
+Selection Sort; ascending; 200000; 81.77400208
+
+Quick Sort; ascending; 200000; 0.04200000
+
+Heap Sort; ascending; 200000; 0.08600000
+
+Selection Sort; ascending; 300000; 194.48399353
+
+Quick Sort; ascending; 300000; 0.05800000
+
+Heap Sort; ascending; 300000; 0.12800001
