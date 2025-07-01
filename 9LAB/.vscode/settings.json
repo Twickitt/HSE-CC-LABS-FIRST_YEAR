@@ -1,0 +1,11 @@
+{
+    "files.associations": {
+        "student_struct.h": "c",
+        "to_lower.h": "c",
+        "stdio.h": "c",
+        "red_black_tree.h": "c",
+        "xiosbase": "c",
+        "string.h": "c",
+        "linear_search_with_any_case.h": "c"
+    }
+}
